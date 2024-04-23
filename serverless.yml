@@ -72,14 +72,6 @@ resources:
         AttributeDefinitions:
           - AttributeName: customerID
             AttributeType: S
-          - AttributeName: name
-            AttributeType: S
-          - AttributeName: email
-            AttributeType: S
-          - AttributeName: phone
-            AttributeType: S
-          - AttributeName: address
-            AttributeType: S
         KeySchema:
           - AttributeName: customerID
             KeyType: HASH
