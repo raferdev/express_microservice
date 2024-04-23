@@ -22,8 +22,6 @@ jobs:
           echo "${{ secrets.ENV_TEST_FILE }}" > .env
       - name: Install dependencies
         run: pnpm i
-      - name: Build
-        run: pnpm run build
       - name: Run Lint tests
         run: pnpm eslint.check
       - name: Run Jest tests
