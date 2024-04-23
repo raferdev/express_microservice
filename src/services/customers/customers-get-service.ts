@@ -1,5 +1,7 @@
 import { customersGetAllRepository } from "@/repositories/customers/customers-get-repository";
 
 export async function customersGetService() {
-  return await customersGetAllRepository();
+  const { Items } = await customersGetAllRepository();
+
+  return Items;
 }
