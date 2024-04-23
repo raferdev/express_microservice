@@ -1,20 +1,41 @@
 # CUSTOMERS MICROSERVICE REST API
 
+[![Test amd Deploy](https://github.com/raferdev/express_microservice/actions/workflows/deploy.yml/badge.svg)](https://github.com/raferdev/express_microservice/actions/workflows/deploy.yml)
+
 This is a microservice builded with serverless framework.
 
-## Install
+AWS Deploy endpoint: https://xczqbua6pk.execute-api.us-east-1.amazonaws.com/production/v1/customers (💸)
+
+This project contains:
+
+- CI/CD : Using Github Actions to automate tests with Jest and deploy serverless insfrastructure on AWS cloud
+
+- Logs/Metrics/Control : Environment instrumentalized with open-telemetry Node, Express, and Winston, being captured by AWS observability.
+
+- Architecture: Built across Express routes, middlewares, controllers, and services, it can handle and control all endpoints using AWS Lambda and persist on DynamoDB.
+
+- Linting: Eslint with flat config, prettier, lint-staged with husly.
+
+Table of Content:
+
+- 1.0 - [Installation](#install)
+- 2.0 - [Running](#run)
+- 2.1 - [Tests](#run-tests)
+- 3.0 - [API REST](#api-rest)
+
+## [Install](#install)
 
     pnpm install
 
-## Run the app
+## [Run the app](#run)
 
 serverless offline
 
-## Run the tests
+## [Run the tests](#run-tests)
 
     pnpm test
 
-# REST API
+# [REST API](#api-rest)
 
 The REST API to the example app is described below.
 
