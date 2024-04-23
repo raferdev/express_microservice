@@ -7,7 +7,7 @@ export async function customerDeleteByIdRepository(id: string) {
     new DeleteCommand({
       TableName: env.DYNAMODB_TABLE,
       Key: {
-        id,
+        customersID: id,
       },
     })
   );
