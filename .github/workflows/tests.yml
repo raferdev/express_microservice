@@ -1,0 +1,36 @@
+name: Runing Tests
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node & Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.14.1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          cache: "pnpm"
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_TEST_FILE }}" > .env
+      - name: Install dependencies
+        run: pnpm i
+      - name: Run Lint tests
+        run: pnpm eslint.check
+      - name: Run Jest tests
+        env:
+          CI: "true"
+        run: pnpm test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 1
