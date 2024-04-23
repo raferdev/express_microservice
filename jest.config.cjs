@@ -7,4 +7,10 @@ module.exports = {
   testEnvironmentOptions: {
     NODE_ENV: "test",
   },
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
+  transform: {
+    "^.+\\.ts?$": "ts-jest",
+  },
 };
