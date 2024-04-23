@@ -1,5 +1,7 @@
-import { customerGetByIdRepository } from "@/repositories/customers/customers-get-id-repository";
+import { searchCostumersByTextRepository } from "@/repositories/search/search-customers-text-repository";
 
-export async function searchCustomersService(id: string) {
-  return await customerGetByIdRepository(id);
+export async function searchCustomersService(text: string) {
+  const { Items } = await searchCostumersByTextRepository(text);
+
+  return Items;
 }
