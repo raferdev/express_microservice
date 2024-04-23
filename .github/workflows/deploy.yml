@@ -48,7 +48,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: pnpm i
+      - name: Setup Node & Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.14.1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          cache: "pnpm"
       - name: serverless deploy
         uses: serverless/github-action@v3.2
         with:
