@@ -36,7 +36,7 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
-    depends-on: tests
+    needs: tests
     environment:
       name: production
     strategy:
