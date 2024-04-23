@@ -39,16 +39,9 @@ jobs:
     needs: tests
     environment:
       name: production
-    strategy:
-      matrix:
-        node-version: [20.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Setup Node & Pnpm
+      - name: Setup Pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8.14.1
@@ -56,10 +49,12 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install -g serverless && pnpm install
       - name: serverless deploy
         uses: serverless/github-action@v3.2
         with:
-          args: -c "serverless plugin install --name serverless-offline && serverless plugin install --name serverless-dynamodb-local && serverless plugin install --name sserverless-esbuild && serverless deploy --stage production"
+          args: -c "serverless deploy --stage production"
           entrypoint: /bin/sh
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
