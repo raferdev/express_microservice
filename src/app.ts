@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import helmet from "helmet";
 import cors from "cors";
-import { v1Router } from "./routes/v1/v1-router.js";
+import { v1Router } from "./routes/v1/v1-router";
 
 const app: Express = express();
 
