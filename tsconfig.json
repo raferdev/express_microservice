@@ -28,5 +28,5 @@
     }
   },
   "exclude": ["./dist/**/*", "./node_modules/**/*"],
-  "include": ["*.ts", "./src/**/*.ts", "./tests/**/*.ts", "jest.config.js"]
+  "include": ["*.ts", "./src/**/*.ts", "./tests/**/*.ts", "jest.config.cjs"]
 }
