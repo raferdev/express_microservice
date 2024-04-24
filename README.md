@@ -4,8 +4,6 @@
 
 This is a microservice builded with serverless framework.
 
-AWS Deploy endpoint: https://xczqbua6pk.execute-api.us-east-1.amazonaws.com/production/v1/customers (💸)
-
 This project contains:
 
 - CI/CD : Using Github Actions to automate tests with Jest and deploy serverless insfrastructure on AWS cloud
@@ -29,7 +27,12 @@ Table of Content:
 
 ## [Run the app](#run)
 
-serverless offline
+You need first create dynamoDB table in AWS with the name "customers-microservice-$stage"
+$stage is the stage that you will pass on initial script
+
+like:
+
+ - serverless offline --stage development
 
 ## [Run the tests](#run-tests)
 
@@ -111,18 +114,18 @@ The REST API to the example app is described below.
 
 `DELETE /v1/customers/:customersID`
 
-    curl -i -H 'Accept: application/json' http://localhost:7000/thing/9999
+    curl -i -H 'Accept: application/json' http://localhost:3000/v1/customers/:customersID
 
 ### Response
 
-    HTTP/1.1 404 Not Found
+    HTTP/1.1 200 Success
     Date: Thu, 24 Feb 2011 12:36:30 GMT
     Status: 404 Not Found
     Connection: close
     Content-Type: application/json
     Content-Length: 35
 
-    {"status":404,"reason":"Not found"}
+    {}
 
 ## Search by text
 
@@ -134,9 +137,9 @@ The REST API to the example app is described below.
 
 ### Response
 
-    HTTP/1.1 201 Created
+    HTTP/1.1 200 Success
     Date: Thu, 24 Feb 2011 12:36:31 GMT
-    Status: 201 Created
+    Status: 200 Success
     Connection: close
     Content-Type: application/json
     Location: /thing/2
